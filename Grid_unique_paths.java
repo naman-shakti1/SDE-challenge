@@ -28,19 +28,31 @@ public class Grid_unique_paths {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter number of rows: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Please enter a valid number of rows.");
+            scanner.close();
+            return;
+        }
         int m = scanner.nextInt();
 
         System.out.print("Enter number of columns: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Please enter a valid number of columns.");
+            scanner.close();
+            return;
+        }
         int n = scanner.nextInt();
+
+        if (m <= 0 || n <= 0) {
+            System.out.println("Rows and columns must be positive.");
+            scanner.close();
+            return;
+        }
 
         Solution solution = new Solution();
         int paths = solution.uniquePaths(m, n);
 
-        if (paths == 0) {
-            System.out.println("Rows and columns must be positive.");
-        } else {
-            System.out.println("Number of unique paths: " + paths);
-        }
+        System.out.println("Number of unique paths: " + paths);
 
         scanner.close();
     }
